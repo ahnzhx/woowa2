@@ -15,8 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
+import com.woowa.fooddomainservice.domain.generic.money.Money;
+import com.woowa.fooddomainservice.domain.shop.OptionGroup;
 import lombok.Builder;
 import lombok.Getter;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * packageName	: com.woowa.fooddomainservice.domain.order

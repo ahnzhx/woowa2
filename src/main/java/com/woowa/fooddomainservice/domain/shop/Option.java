@@ -3,6 +3,7 @@
  */
 package com.woowa.fooddomainservice.domain.shop;
 
+import com.woowa.fooddomainservice.domain.generic.money.Money;
 import lombok.Builder;
 import lombok.Data;
 

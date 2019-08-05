@@ -16,8 +16,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.woowa.fooddomainservice.domain.generic.money.Money;
 import lombok.Builder;
 import lombok.Getter;
+
+import static java.util.stream.Collectors.toList;
 
 @Entity
 @Table(name="ORDERS")
