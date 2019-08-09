@@ -13,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.transform.ToListResultTransformer;
-
 import lombok.Builder;
 import lombok.Getter;
 
@@ -65,7 +63,7 @@ public class OptionGroupSpecification {
 		return name;
 	}
 	
-	public boolean isStaisfiedBy(OptionGroup optionGroup) {
+	public boolean isSatisfiedBy(OptionGroup optionGroup) {
 		return !isSatisfied(optionGroup.getName(), satisfied(optionGroup.getOptions()));
 	}
 	
