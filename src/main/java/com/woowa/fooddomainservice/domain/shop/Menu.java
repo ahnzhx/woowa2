@@ -85,6 +85,6 @@ public class Menu {
 	}
 	
 	private boolean isSatisfiedBy(OptionGroup group) {
-		return optionGroupSpecs.stream().anyMatch(spec->spec.isStaisfiedBy(group));
+		return optionGroupSpecs.stream().anyMatch(spec->spec.isSatisfiedBy(group));
 	}
 }

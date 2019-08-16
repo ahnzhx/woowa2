@@ -3,19 +3,31 @@
  */
 package com.woowa.fooddomainservice.service.shop;
 
-/**
- * packageName	: com.woowa.fooddomainservice.service.shop
- * fileName	: ShopService.java 
- * author		: twayair
- * date		: 2019. 8. 8.
- * 내용			: 
- *
- * ===========================================================
- *
- * DATE				AUTHOR			NOTE
- * -----------------------------------------------------------
- * 2019. 8. 8.			twayair			최초 생성
- */
-public class ShopService {
+import com.woowa.fooddomainservice.domain.shop.Menu;
+import com.woowa.fooddomainservice.domain.shop.MenuRepository;
+import com.woowa.fooddomainservice.domain.shop.Shop;
+import com.woowa.fooddomainservice.domain.shop.ShopRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
+
+@Service
+public class ShopService {
+    private ShopRepository shopRepository;
+    private MenuRepository menuRepository;
+
+    public ShopService(ShopRepository shopRepository,
+                       MenuRepository menuRepository) {
+        this.shopRepository = shopRepository;
+        this.menuRepository = menuRepository;
+    }
+
+    @Transactional(readOnly = true)
+    public MenuBoard getMenuBoard(Long shopId){
+        Shop shop = shopRepository.findById(shopId).orElseThrow(IllegalArgumentException::new);
+        List<Menu> menus = menuRepository.findByShopId(shopId);
+        return new MenuBoard(shop, menus);
+    }
 }

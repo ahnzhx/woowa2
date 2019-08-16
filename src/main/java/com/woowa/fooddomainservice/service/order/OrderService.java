@@ -29,18 +29,18 @@ public class OrderService {
 	private OrderValidator orderValidator;
 	private OrderMapper orderMapper;
 	private OrderDeliveredService orderDeliveredService;
-	private OrderPayedService orderPayedSevice;
+	private OrderPayedService orderPayedService;
 	
 	public OrderService(OrderRepository orderRepository, 
 						OrderValidator orderValidator, 
 						OrderMapper orderMapper,
 						OrderDeliveredService orderDeliveredService, 
-						OrderPayedService orderPayedSevice) {
+						OrderPayedService orderPayedService) {
 		this.orderRepository = orderRepository;
 		this.orderValidator = orderValidator;
 		this.orderMapper = orderMapper;
 		this.orderDeliveredService = orderDeliveredService;
-		this.orderPayedSevice = orderPayedSevice;
+		this.orderPayedService = orderPayedService;
 	}
 	
 	@Transactional

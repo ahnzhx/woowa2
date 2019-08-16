@@ -56,17 +56,12 @@ public class OrderOptionGroup {
 		this(null, name, options);
 	}
 
-	/**
-	 * @param id
-	 * @param name
-	 * @param orderOptions
-	 */
 	@Builder
-	public OrderOptionGroup(Long id, String name, List<OrderOption> orderOptions) {
+	public OrderOptionGroup(Long id, String name, List<OrderOption> options) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.orderOptions = orderOptions;
+		this.orderOptions = options;
 	}
 	
 	OrderOptionGroup(){

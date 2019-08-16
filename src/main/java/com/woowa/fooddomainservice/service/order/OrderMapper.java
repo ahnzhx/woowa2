@@ -62,6 +62,6 @@ public class OrderMapper {
 	private OrderOption toOrderOption(Cart.CartOption cartOption) {
 		return new OrderOption(
 				cartOption.getName(),
-				cartOtpion.getPrice());
+				cartOption.getPrice());
 	}
 }

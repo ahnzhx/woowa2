@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
 
+import static java.util.stream.Collectors.toList;
+
 @Entity
 @Table(name="OPTION_GROUP_SPECS")
 @Getter

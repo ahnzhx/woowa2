@@ -47,7 +47,7 @@ public class OrderValidator {
             throw new IllegalArgumentException("주문 항목이 비어있습니다.");
         }
         if(!shop.isValidOrderAmount(order.calculateTotalPrice())){
-            throw new IllegalArgumentException("최소 주문 금액 %s 이상을 주문해주세요", shop.getMinOrderAmount()));
+            throw new IllegalArgumentException(String.format("최소 주문 금액 %s 이상을 주문해주세요", shop.getMinOrderAmount()));
         }
         for(OrderLineItem item : order.getOrderLineItems()){
             validateOrderLineItem(item, menus.get(item.getMenuId()));
