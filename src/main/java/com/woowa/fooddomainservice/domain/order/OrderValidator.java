@@ -39,7 +39,7 @@ public class OrderValidator {
         validate(order, getShop(order), getMenus(order));
     }
 
-    void validate(Order order, Shop shop, Map<Long, Menu> menus){
+    public void validate(Order order, Shop shop, Map<Long, Menu> menus){
         if(!shop.isOpen()){
             throw new IllegalArgumentException("가게가 영업중이 아닙니다.");
         }

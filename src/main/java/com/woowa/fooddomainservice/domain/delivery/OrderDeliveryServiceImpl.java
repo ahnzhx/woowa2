@@ -27,20 +27,20 @@ public class OrderDeliveryServiceImpl implements OrderPayedService, OrderDeliver
 	@Override
     public void deliverOrder(Long orderId) {
 		Order order = orderRepository.findById(orderId).orElseThrow(IllegalArgumentException::new);
-		order.payed();
-		
-		Delivery delivery = Delivery.started(orderId);
-		deliveryRepository.save(delivery);
-    }
-
-    @Override
-    public void payOrder(Long orderId) {
-		Order order = orderRepository.findById(orderId).orElseThrow(IllegalArgumentException::new);
-		Shop shop = shopRepository.findById(order.getShopId()).orElseThrow(IllegalArgumentException::new);
+		Shop shop = shopRepository.findById(order.getId()).orElseThrow(IllegalArgumentException::new);
 		Delivery delivery = deliveryRepository.findById(orderId).orElseThrow(IllegalArgumentException::new);
 
 		order.delivered();
 		shop.billCommissionFee(order.calculateTotalPrice());
 		delivery.complete();
+    }
+
+    @Override
+    public void payOrder(Long orderId) {
+		Order order = orderRepository.findById(orderId).orElseThrow(IllegalArgumentException::new);
+		order.payed();
+
+		Delivery delivery = Delivery.started(orderId);
+		deliveryRepository.save(delivery);
     }
 }

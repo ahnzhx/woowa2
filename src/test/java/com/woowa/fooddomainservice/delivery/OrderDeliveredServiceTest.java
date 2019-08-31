@@ -56,20 +56,13 @@ public class OrderDeliveredServiceTest {
         when(orderRepository.findById(order.getId())).thenReturn(Optional.of(order));
         when(shopRepository.findById(shop.getId())).thenReturn(Optional.of(shop));
         when(deliveryRepository.findById(delivery.getId())).thenReturn(Optional.of(delivery));
-        when(deliveryRepository.findById(delivery.getId())).thenReturn(Optional.of(delivery));
+
 
         orderDeliveredService.deliverOrder(order.getId());
-        //TODO: 에러나는거 해결하기
-        System.out.println(order.getOrderStatus());
-        System.out.println(delivery.getDeliveryStatus());
-        System.out.println(shop.getCommission());
 
-
-
-//
-//        assertThat(order.getOrderStatus(), is(Order.OrderStatus.DELIVERED));
-//        assertThat(delivery.getDeliveryStatus(), is(Delivery.DeliveryStatus.DELIVERED));
-//        assertThat(shop.getCommission(), is(Money.wons(1100)));
+        assertThat(order.getOrderStatus(), is(Order.OrderStatus.DELIVERED));
+        assertThat(delivery.getDeliveryStatus(), is(Delivery.DeliveryStatus.DELIVERED));
+        assertThat(shop.getCommission(), is(Money.wons(1100)));
     }
 
 
