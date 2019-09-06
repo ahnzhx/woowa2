@@ -1,13 +1,18 @@
 package com.woowa.fooddomainservice.domain.shop;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.woowa.fooddomainservice.domain.generic.money.Money;
 import com.woowa.fooddomainservice.domain.generic.money.Ratio;
+
 import lombok.Builder;
 import lombok.Getter;
-
-import javax.persistence.*;
-
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name="SHOPS")
@@ -72,5 +77,9 @@ public class Shop {
 
     public void billCommissionFee(Money price){
         commission = commission.plus(commissionRate.of(price));
+    }
+    
+    public Money calculateCommissionFee(Money price) {
+    	return commissionRate.of(price);
     }
 }
